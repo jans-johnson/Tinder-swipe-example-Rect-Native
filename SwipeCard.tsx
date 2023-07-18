@@ -10,8 +10,6 @@ const SwipeCard = () => {
             renderCard={(card) => {
                 return (
                     <View style={styles.card}>
-                        <Text style={[styles.positive]}>yes</Text>
-                        <Text style={[styles.negative]}>No</Text>
                         <Text style={styles.text}>{card}</Text>
                     </View>
                 )
@@ -24,6 +22,48 @@ const SwipeCard = () => {
             cardIndex={0}
             backgroundColor={'#4FD0E9'}
             stackSize= {3}
+            stackSeparation={10}
+            overlayLabels={{
+                left: {
+                  title: 'NOPE',
+                  style: {
+                    label: {
+                      backgroundColor: 'red',
+                      borderColor: 'black',
+                      color: 'white',
+                      borderWidth: 1
+                    },
+                    wrapper: {
+                      flexDirection: 'column',
+                      alignItems: 'flex-end',
+                      justifyContent: 'flex-start',
+                      marginTop: 30,
+                      marginLeft: -30
+                    }
+                  }
+                },
+                right: {
+                  title: 'LIKE',
+                  style: {
+                    label: {
+                      backgroundColor: 'green',
+                      borderColor: 'black',
+                      color: 'white',
+                      borderWidth: 1
+                    },
+                    wrapper: {
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      justifyContent: 'flex-start',
+                      marginTop: 30,
+                      marginLeft: 30
+                    }
+                  }
+                },
+              }}
+              animateOverlayLabelsOpacity
+              animateCardOpacity
+              swipeBackCard
             />
   );
 };
@@ -36,12 +76,12 @@ const styles = StyleSheet.create({
       backgroundColor: '#F5FCFF',
     },
     card: {
-      flex: 1,
       borderRadius: 10,
       borderWidth: 2,
       justifyContent: 'center',
       backgroundColor: 'white',
-      elevation:3
+      elevation:10,
+      height:'80%'
     },
     text: {
       textAlign: 'center',
